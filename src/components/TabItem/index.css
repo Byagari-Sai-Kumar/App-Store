@@ -1,0 +1,16 @@
+/* Write your CSS here */
+.displayTextTabItem {
+  font-size: 16px;
+  color: #7b8794;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: Bree Serif;
+  background: none;
+}
+
+.highlightText {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
