@@ -300,13 +300,7 @@ class AppStore extends Component {
 
   updateActiveTabItem = id => {
     this.setState({activeTabItem: id})
-  }
-
-  gettingAppsBasedOnTab = activeTabItem => {
-    const filteredApps = appsList.filter(
-      eachApp => eachApp.category === activeTabItem,
-    )
-    return filteredApps
+    console.log(id)
   }
 
   updatingUserInput = event => {
@@ -315,7 +309,10 @@ class AppStore extends Component {
 
   render() {
     const {activeTabItem, userInput} = this.state
-    const filteredApps = this.gettingAppsBasedOnTab(activeTabItem)
+
+    const filteredApps = appsList.filter(
+      eachApp => eachApp.category === activeTabItem,
+    )
 
     const searchFilteredApps = filteredApps.filter(eachItem =>
       eachItem.appName.toLowerCase().includes(userInput.toLowerCase()),
@@ -338,20 +335,18 @@ class AppStore extends Component {
           />
         </div>
         <ul className="TabItemSection">
-          <li className="TabItemSection">
-            {tabsList.map(eachTabItem => (
-              <TabItem
-                key={eachTabItem.tabId}
-                tabsList={eachTabItem}
-                updateActiveTabItem={this.updateActiveTabItem}
-                isActive={eachTabItem.tabId === activeTabItem}
-              />
-            ))}
-          </li>
+          {tabsList.map(eachTabItem => (
+            <TabItem
+              key={eachTabItem.tabId}
+              tabsList={eachTabItem}
+              updateActiveTabItem={this.updateActiveTabItem}
+              isActive={eachTabItem.tabId === activeTabItem}
+            />
+          ))}
         </ul>
         <ul className="overAllAppsContainer">
           {searchFilteredApps.map(eachAppItem => (
-            <AppItem appsList={eachAppItem} key={eachAppItem.category} />
+            <AppItem appsList={eachAppItem} key={eachAppItem.appId} />
           ))}
         </ul>
       </div>

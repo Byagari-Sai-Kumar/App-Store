@@ -12,13 +12,15 @@ const TabItem = props => {
   const activeClass = isActive ? 'highlightText' : ''
 
   return (
-    <button
-      type="button"
-      className={`displayTextTabItem ${activeClass}`}
-      onClick={clickedOnTabItem}
-    >
-      {displayText}
-    </button>
+    <li>
+      <button
+        type="button"
+        className={`displayTextTabItem ${activeClass}`}
+        onClick={clickedOnTabItem}
+      >
+        {displayText}
+      </button>
+    </li>
   )
 }
 
